@@ -1,0 +1,371 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    padding: 60px 0;
+    margin-bottom: 4rem;
+    background-color: rgba(249, 249, 249, 0.9);/*rgba*/
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+
+/* Headings for Buffete, Localización, Contactanos */
+.section-heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    color: #8B0000;
+    /* Dark Red */
+    border-bottom: 4px solid #8B0000;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+
+/* Cards for Buffete */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Stagger animations for cards */
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: calc(var(--order) * 100ms);
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Optional: Card Hover Effect for Buffete section */
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(139, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* For image placeholders */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.card-img-top.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Body background with a red-to-yellow gradient */
+body {
+    padding-top: 70px;
+    background: linear-gradient(to bottom, #8B0000, #FFD700);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+/* Navbar links */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #8B0000; /*FFD700*/
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+}
+
+/* For food images in carousel */
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+    /* For slide transition */
+}
+
+.carousel-item img {
+    transform: scale(1.1);
+    transition: transform 8s ease-out;
+}
+
+.carousel-item.active img {
+    filter: brightness(1.05);
+    /* Subtle highlight instead of scale */
+    transform: scale(1.05);
+}
+
+.menu-highlight {
+    animation: pulse 2s infinite;
+}
+
+/* Price table */
+.table {
+    width: 100%;
+    margin: 2rem auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+    border-radius: 12px;
+    background: white;
+}
+
+.table thead {
+    background-color: #8B0000;
+    color: white;
+}
+
+.table th {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td, .table th[scope="row"] {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(139, 0, 0, 0.03);
+    transition: background-color 0.3s ease;
+}
+
+.table th[scope="row"] {
+    color: #8B0000;
+    font-weight: 600;
+}
+
+/* Price highlighting */
+td:contains('$'), th:contains('$') {
+    font-weight: bold;
+    color: #8B0000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .table th {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+/* Table to go */
+table.extrasToGo {
+    width: 100%;
+    margin: 2rem auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.extrasToGo thead {
+    background: linear-gradient(to right, #8B0000, #A52A2A);
+}
+
+.extrasToGo th {
+    padding: 1.2rem 0.5rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.extrasToGo th:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.extrasToGo th span.price {
+    display: block;
+    font-size: 1.3rem;
+    color: #FFD700;
+    margin-top: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .extrasToGo {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .extrasToGo th {
+        font-size: 0.95rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    .extrasToGo th span.price {
+        font-size: 1.1rem;
+    }
+}
+
+
+main {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #8B0000;
+    border-color: #8B0000;
+}
+
+.btn-primary:hover {
+    background-color: #6B0000;
+    border-color: #6B0000;
+}
+
+/* Schedule Section */
+.schedule {
+    background-color: #fff3cd;
+    border-left: 5px solid #dc3545;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.schedule ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ffeeba;
+}
+
+.schedule ul li:last-child {
+    border-bottom: none;
+}
+
+/* For call-to-action elements */
+@keyframes subtleBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.cta-button {
+    animation: subtleBounce 2s ease-in-out infinite;
+}
+
+/* For daily special badge */
+@keyframes flash {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/*Loading Animation*/
+.special-badge {
+    animation: flash 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+
+/* About Section Styles */
+.about-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-left: 4px solid #8B0000;
+    position: relative;
+}
+
+.about-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: url('Images/chinese-pattern.png') no-repeat; /* Optional: Add cultural pattern */
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.about-content > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        padding: 2rem !important;
+    }
+}
