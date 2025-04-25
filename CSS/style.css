@@ -1,0 +1,457 @@
+/* ===== Base Styles ===== */
+body {
+    padding-top: 70px;
+    background: linear-gradient(to bottom, #8B0000, #FFD700);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: linear-gradient(to bottom, #8B0000, #FFD700), #8B0000;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Typography ===== */
+.section-heading {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    color: #8B0000;
+    border-bottom: 4px solid #8B0000;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+/* ===== Navigation ===== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    transition: all 0.3s ease;
+    background-color: white;
+    backdrop-filter: blur(2px);
+}
+
+.navbar.scrolled {
+    box-shadow: 0 2px 10px rgba(121, 113, 113, 0.85);
+    background-color: white; /* Same solid color when scrolled */
+}
+
+/* Ensure nav links remain visible */
+.navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.navbar-brand img {
+    filter: drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.8));
+}
+
+/* Mobile menu - same solid color */
+@media (max-width: 992px) {
+    .navbar {
+        background-color: white !important;
+    }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes subtleBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* ===== Section Styles ===== */
+section {
+    padding: 60px 0;
+    margin-bottom: 4rem;
+    background-color: rgba(249, 249, 249, 0.9);
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* ===== Card Styles ===== */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: calc(var(--order) * 100ms);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(139, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img-top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(139, 0, 0, 0.1), rgba(139, 0, 0, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-img-top::after {
+    opacity: 1;
+}
+
+.card-img-top.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ===== Table Styles ===== */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #8B0000;
+    border-radius: 4px;
+}
+
+.table {
+    width: 100%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+    border-radius: 12px;
+    background: white;
+    overflow-x: auto;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .table {
+        display: table;
+    }
+}
+
+.table td,
+.table th {
+    padding: 0.75rem;
+    min-width: 120px;
+}
+
+.table thead {
+    background-color: #8B0000;
+    color: white;
+}
+
+.table th {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table td,
+.table th[scope="row"] {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(139, 0, 0, 0.1);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 215, 0, 0.05);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(139, 0, 0, 0.03);
+    transition: background-color 0.3s ease;
+}
+
+.table th[scope="row"] {
+    color: #8B0000;
+    font-weight: 600;
+}
+
+/* Special table styles */
+.extrasToGo {
+    width: 100%;
+    margin: 2rem auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.extrasToGo thead {
+    background: linear-gradient(to right, #8B0000, #A52A2A);
+}
+
+.extrasToGo th {
+    padding: 1.2rem 0.5rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.extrasToGo th:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.extrasToGo th span.price {
+    display: block;
+    font-size: 1.3rem;
+    color: white;
+    margin-top: 5px;
+}
+
+/* ===== Button Styles ===== */
+.btn-primary,
+.btn-danger {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: none;
+    box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #8B0000;
+    border-color: #8B0000;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(139, 0, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #6B0000;
+    border-color: #6B0000;
+}
+
+.btn-primary::after,
+.btn-danger::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.btn-primary:hover::after,
+.btn-danger:hover::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* ===== Special Components ===== */
+.schedule {
+    background-color: #fff3cd;
+    border-left: 5px solid #dc3545;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.schedule ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ffeeba;
+}
+
+.schedule ul li:last-child {
+    border-bottom: none;
+}
+
+.cta-button {
+    animation: subtleBounce 2s ease-in-out infinite;
+}
+
+.special-badge {
+    animation: flash 3s ease-in-out infinite;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+.about-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-left: 4px solid #8B0000;
+    position: relative;
+}
+
+.about-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: url('Images/chinese-pattern.png') no-repeat;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.about-content>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Carousel Styles ===== */
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item img {
+    transform: scale(1.1);
+    transition: transform 8s ease-out;
+}
+
+.carousel-item.active img {
+    filter: brightness(1.05);
+    transform: scale(1.05);
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 2rem !important;
+    }
+
+    .table th {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.5rem;
+    }
+
+    .extrasToGo th {
+        font-size: 0.95rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .extrasToGo th span.price {
+        font-size: 1.1rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .section-heading {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+}
